@@ -2,6 +2,7 @@ package com.test;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,7 +49,7 @@ public class Main {
         driver.switchTo().defaultContent();
         WebElement d7 = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='tinymce']/p")));
         System.out.println(d7.getText());*/
-        driver.get("http://the-internet.herokuapp.com/javascript_alerts");
+       /* driver.get("http://the-internet.herokuapp.com/javascript_alerts");
         WebElement d8 = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(), 'Click for JS Alert')]")));
         d8.click();
         Alert a = driver.switchTo().alert();
@@ -65,7 +66,35 @@ public class Main {
         Alert a3 = driver.switchTo().alert();
         sleep();
         a3.sendKeys("test");
-        a3.accept();
+        a3.accept();*/
+      /*  driver.get("http://the-internet.herokuapp.com/dynamic_loading/1");
+        WebElement d11 = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), 'Hello World')]")));
+
+System.out.println(getText(d11,driver));
+makeVisible(d11,driver);*/
+       /* driver.get("http://the-internet.herokuapp.com/drag_and_drop");
+        WebElement d12 = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id = 'column-a']")));
+        WebElement d13 = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id = 'column-b']")));
+        Actions builder = new Actions(driver);
+        builder.dragAndDrop(d13, d12).perform();*/
+      /*  driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
+        WebElement d14 = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='content']/div/button")));
+        Actions builder = new Actions(driver);
+        builder.moveToElement(d14).perform();
+      //  builder.contextClick(d14).perform();*/
+
+    }
+
+    public static String getText(final WebElement element, WebDriver driver) {
+        String script = "var element = arguments[0];"
+                + "return element.textContent;";
+        return (String) ((JavascriptExecutor) driver).executeScript(script, element);
+    }
+
+    public static void makeVisible(final WebElement element, WebDriver driver) {
+        String script = "var element = arguments[0];"
+                + "element.style.display = 'block';";
+        ((JavascriptExecutor) driver).executeScript(script, element);
     }
 
     private static void sleep() {
