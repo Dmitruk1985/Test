@@ -8,32 +8,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Item {
 
-    private By addToCartButtonLocator = By.xpath("//span[contains(text(), 'Add to cart')]");
+    private By addToCartButtonLocator = By.xpath(".//span[contains(text(), 'Add to cart')]");
     private By price = By.xpath("//span[@itemprop='price']");
-    private By name = By.xpath("//a[@class='product-name']");
+    private By name = By.xpath(".//a[@class='product-name']");
     private By moreButtonLocator = By.xpath("//span[contains(text(), 'More')]");
     private WebElement parent;
 
-    private final WebDriver driver;
-
-    public Item(WebDriver driver, WebElement parent) {
-        this.driver = driver;
+    public Item(WebElement parent) {
         this.parent = parent;
     }
 
     public String getTitle() {
-        WebElement d = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(name));
+        WebElement d = parent.findElement(name);
+        return d.getText();
+    }
+
+    public String getPrice() {
+        WebElement d = parent.findElement(price);
         return d.getText();
     }
 
     public Item addToCart() {
-        WebElement d = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(addToCartButtonLocator));
+        WebElement d = parent.findElement(addToCartButtonLocator);
         d.click();
         return this;
     }
 
     public Item viewFullPage() {
-        WebElement d = (new WebDriverWait(driver, 5)).until(ExpectedConditions.presenceOfElementLocated(moreButtonLocator));
+        WebElement d = parent.findElement(moreButtonLocator);
         d.click();
         return this;
     }
