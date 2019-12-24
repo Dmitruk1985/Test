@@ -3,16 +3,19 @@ package com.test;
 import com.test.core.Driver;
 import com.test.pages.Item;
 import com.test.pages.MyStorePage;
-import com.test.pages.NavigationPanel;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.*;
 
-public class Main2 {
-    public static void main(String[] arg) {
+public class Main2Test {
 
+    @BeforeAll
+    static void openDriver() {
         Driver.getInstance().get("http://automationpractice.com/index.php");
+    }
+    @Test
+    @DisplayName("Мой тест")
+    @Tag("NewFeature")
+   // @Disabled("Тест отменен")
+    public void test() {
 
         MyStorePage m = new MyStorePage();
        // m.switchToBestSelles();
@@ -23,4 +26,10 @@ public class Main2 {
         n.switchToWomen();
         n.switchToBlouses();*/
     }
+
+    @AfterAll
+    static void closeDriver() {
+        Driver.getInstance().close();
+    }
 }
+

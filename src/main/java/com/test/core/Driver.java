@@ -16,7 +16,6 @@ public class Driver {
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
             instance = new ChromeDriver();
         }
-        ;
         return instance;
     }
 }
