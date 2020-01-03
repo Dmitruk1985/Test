@@ -25,7 +25,7 @@ public class Main3Test {
         NavigationPanel n = new NavigationPanel(driver);
         n.switchToWomen();
         n.switchToBlouses();*/
-    }
+         }
 
     @AfterAll
     static void closeDriver() {

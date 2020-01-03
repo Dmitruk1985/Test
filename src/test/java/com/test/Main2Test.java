@@ -25,6 +25,7 @@ public class Main2Test {
         NavigationPanel n = new NavigationPanel(driver);
         n.switchToWomen();
         n.switchToBlouses();*/
+      Driver.makeScreenShot();
     }
 
     @AfterAll

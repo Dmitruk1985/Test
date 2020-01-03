@@ -1,6 +1,8 @@
 package com.test.pages;
 
 import com.test.utils.Waiter;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +39,7 @@ public class MyStorePage extends AbstractPage {
         return this;
     }
 
+    @Step("Находим элемент [{0}]")
     public Item findItem(String name) {
         for (int i = 0; i < itemLocator.size(); i++) {
             WebElement parent = itemLocator.get(i);
