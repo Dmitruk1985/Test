@@ -29,7 +29,7 @@ public class Main2Test {
 
     @AfterAll
     static void closeDriver() {
-        Driver.getInstance().close();
+//        Driver.quitDriver();
     }
 }
 
